@@ -3,8 +3,4 @@
 .env
 __pycache__/
 conf.h
-firmware/esp8266/.vscode/c_cpp_properties.json
-firmware/esp8266/.vscode/launch.json
-firmware/uno/.vscode/c_cpp_properties.json
-firmware/uno/.vscode/launch.json
 .env.json
