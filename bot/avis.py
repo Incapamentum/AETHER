@@ -1,5 +1,7 @@
 ##aetherbot
 import discord
+import firebase_admin
+from firebase_admin import credentials
 import json
 import asyncio
 import os
@@ -22,12 +24,10 @@ async def on_message(message):
     if message.content.startswith('.hello'):
         await message.channel.send('hey!')
 
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
     if message.content.startswith('.intro'):
         await message.channel.send('hey! my name is Aether, your AErometric Tethered Home Responder.')
+
+    if message.content.startswith('.purpose'):
+        await message.channel.send('Aether checks the humidity and temperature of your surroundings. i will have other features too, so check back later!')
 
 client.run(TOKEN)
