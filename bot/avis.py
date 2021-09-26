@@ -22,12 +22,6 @@ async def on_message(message):
     if message.content.startswith('.hello'):
         await message.channel.send('hey!')
 
-##make this work later
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
     if message.content.startswith('.intro'):
         await message.channel.send('hey! my name is Aether, your AErometric Tethered Home Responder.')
 
