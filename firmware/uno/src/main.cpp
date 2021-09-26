@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <SimpleDHT.h>
 #include <SoftwareSerial.h>
+#include <ArduinoJson.h>
 
 #define DHTPIN 13
 #define RX_PIN 2
@@ -24,22 +25,17 @@ void loop()
 {
     dht11.read(DHTPIN, &temperature, &humidity, NULL);
 
-    Serial.print("Temperature = "); 
-    Serial.print((int)temperature);
-    Serial.print(" degC");
+    StaticJsonDocument<64> doc;
 
-    Serial.print(" ");
+    doc["sensor"] = "dht11";
+    doc["timestamp"] = -1;
 
-    Serial.print("Humidity = ");
-    Serial.print((int)humidity);
-    Serial.println(" %H");
+    JsonArray data = doc.createNestedArray("data");
+    data.add(temperature);
+    data.add(humidity);
 
-    sUART.print("<");
-    sUART.print((int)temperature, DEC);
-    sUART.print(",");
-    sUART.print((int)humidity, DEC);
-    sUART.print(">");
-    sUART.println();
+    serializeJson(doc, Serial);
+    serializeJson(doc, sUART);
 
     delay(1000);
 }
