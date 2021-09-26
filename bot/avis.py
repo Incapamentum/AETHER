@@ -1,5 +1,7 @@
 ##aetherbot
 import discord
+import firebase_admin
+from firebase_admin import credentials
 import json
 import asyncio
 import os
