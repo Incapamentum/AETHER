@@ -14,13 +14,13 @@ String str;
 byte temperature = 0;
 byte humidity = 0;
 
-void setup()
+void setup() 
 {
     Serial.begin(BAUD_RATE);
     sUART.begin(BAUD_RATE);
 }
 
-void loop()
+void loop() 
 {
     dht11.read(DHTPIN, &temperature, &humidity, NULL);
 

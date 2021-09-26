@@ -7,19 +7,17 @@
 
 SoftwareSerial sUART(RX_PIN, TX_PIN);
 
-void setup()
+void setup() 
 {
     Serial.begin(BAUD_RATE);
     sUART.begin(BAUD_RATE);
 }
 
-void loop()
+void loop() 
 {
-    byte n = sUART.available();
-
     while (sUART.available())
     {
-        char x = sUART.read();
+        char x = sUART.available();
         Serial.print(x);
     }
 }
